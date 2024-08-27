@@ -104,6 +104,17 @@ void exibir_regras_jogo() {
     getchar();  // Espera o jogador pressionar Enter
 }
 
+void letras_minusculas(char *x)
+{
+    for(int i=0; i<6; i++)
+    {
+        if(x[i]<'a' && x[i]!='\0' )
+        {
+            x[i]+=32;
+        }
+
+    }
+}
 int main()
 {
 //DECLARANDO VARIAVEIS
@@ -113,7 +124,6 @@ int main()
     int vetor[5] = {0, 0, 0, 0, 0};
     int verificadas[5] = {0, 0, 0, 0, 0};
     char palavra_sorteada[6];
-    sortear_palavras(palavras_para_sortear, palavra_sorteada);
     char palavra_jogador[6];
     int i = 1;
     int escolha_do_usuario;
@@ -126,7 +136,7 @@ int main()
 
     do {
         // Exibindo o menu
-        printf("===================================\n");
+        printf("\n===================================\n");
         printf("           MENU DO TERMO           \n");
         printf("===================================\n");
         printf("1 - Modo Normal\n");
@@ -147,6 +157,7 @@ int main()
         // Processando a escolha do usuário
         switch(opcao) {
             case 1:
+                sortear_palavras(palavras_para_sortear, palavra_sorteada);
                 printf("Voce escolheu o Modo Normal!\n");
                 do{
                     if(i != 1){
@@ -158,6 +169,7 @@ int main()
                     fflush(stdin);
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
+                    letras_minusculas(palavra_jogador);
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     for(int j = 0; j < strlen(palavra_sorteada); j++){
                         if(vetor[j] == 0){
@@ -171,7 +183,7 @@ int main()
                     letras_ja_usadas(palavra_jogador, saida);
                     letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
                     if(strcmp(palavra_sorteada, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a palavra!!\n\n");
+                        printf("\nParabens, voce acertou a palavra!!\n");
                         break;
                     }
                     printf("\nVoce tem mais %d tentativas", 6 -i);
@@ -180,7 +192,7 @@ int main()
                     i++;
                         }while(i < 7);
                 if(strcmp(palavra_sorteada, palavra_jogador)!=0){
-                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s\n", palavra_sorteada);
+                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s", palavra_sorteada);
     }
                 break;
             case 2:
@@ -197,10 +209,12 @@ int main()
             default:
                 printf("Opcao invalida! Tente novamente.\n");
         }
+        *saida=NULL;
+        i=1;
 
     } while(opcao != 9);
 
-     
+
 
     return 0;
 }
