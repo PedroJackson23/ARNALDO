@@ -171,7 +171,7 @@ int main()
                     letras_ja_usadas(palavra_jogador, saida);
                     letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
                     if(strcmp(palavra_sorteada, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a palavra!!\n");
+                        printf("\nParabens, voce acertou a palavra!!\n\n");
                         break;
                     }
                     printf("\nVoce tem mais %d tentativas", 6 -i);
@@ -200,7 +200,7 @@ int main()
 
     } while(opcao != 9);
 
-      char saida[50] = "";
+     
 
     return 0;
 }
