@@ -180,7 +180,7 @@ int main()
                     i++;
                         }while(i < 7);
                 if(strcmp(palavra_sorteada, palavra_jogador)!=0){
-                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s", palavra_sorteada);
+                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s\n", palavra_sorteada);
     }
                 break;
             case 2:
@@ -200,7 +200,7 @@ int main()
 
     } while(opcao != 9);
 
-
+      char saida[50] = "";
 
     return 0;
 }
