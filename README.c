@@ -445,14 +445,14 @@ int main()
                     printf("\n\n   TERCEIRA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_3, palavra_jogador, vetor_3, verificadas_3);
                     if(strcmp(palavra_sorteada_3, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        printf("\nParabens, voce acertou a terceira palavra!!\n");
                         w=0;
                     }
                     }if(z==1){
                     printf("\n\n   QUARTA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_4, palavra_jogador, vetor_4, verificadas_4);
                     if(strcmp(palavra_sorteada_4, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        printf("\nParabens, voce acertou a quarta palavra!!\n");
                         z=0;
                     }
                     }
