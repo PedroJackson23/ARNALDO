@@ -1,27 +1,116 @@
-//CODE BY: HENRYCO CHAVES CATUNDA
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
 #include <locale.h>
 
-#define TOTAL_PALAVRAS 50
+#define TOTAL_PALAVRAS 1000
 
 
 // LISTA DAS PALAVRAS PARA SORTEAR(EU TIVE A IDEIA DE SEPARAR UM NIVEL DE DIFICULDADE)
 const char *palavras_para_sortear[TOTAL_PALAVRAS] = {
-    // Nível fácil (30 palavras)
-    "balas", "casas", "livro", "porta", "mesas", "prato", "sonho", "molas", "fruta", "clube",
-    "peixe", "banco", "muros", "luzes", "zebra", "mares", "festa", "vilas", "olhos", "pedra",
-    "folha", "piano", "risos", "gelos", "merda", "casas", "lesma", "carro", "salto",
-
-    // Nível médio (15 palavras)
-    "trens", "nuvem", "berco", "trava", "janta", "lanca", "grãos", "pinto", "carro", "falso",
-    "barco", "faixa", "perto", "sinal", "tigre",
-
-    // Nível difícil (5 palavras)
-    "armas", "xaxim", "vinho", "espia", "pneus"
+    "sagaz", "amago", "negro", "termo", "exito", "mexer", "nobre", "senso", "afeto", "algoz",
+    "etica", "plena", "fazer", "tenue", "assim", "mutua", "vigor", "sobre", "aquem", "sutil",
+    "secao", "porem", "poder", "fosse", "sanar", "ideia", "cerne", "audaz", "moral", "inato",
+    "desde", "muito", "justo", "quica", "honra", "sonho", "torpe", "razao", "amigo", "icone",
+    "etnia", "futil", "egide", "anexo", "tange", "dengo", "haver", "lapso", "expor", "entao",
+    "tempo", "seara", "mutuo", "boçal", "habil", "casal", "saber", "avido", "pesar", "ardil",
+    "graça", "dizer", "obice", "causa", "dever", "xibiu", "sendo", "genro", "tenaz", "coser",
+    "paria", "estar", "posse", "brado", "crivo", "ainda", "prole", "comum", "temor", "apice",
+    "corja", "animo", "detem", "pauta", "ceder", "assaz", "ansia", "fugaz", "culto", "censo",
+    "digno", "mundo", "atroz", "forte", "gleba", "vicio", "vulgo", "cozer", "criar", "valha",
+    "mesmo", "saude", "reves", "denso", "nenem", "pudor", "dogma", "jeito", "todos", "regra",
+    "louco", "atras", "ordem", "merce", "homem", "feliz", "pedir", "impor", "banal", "round",
+    "clava", "limbo", "usura", "coisa", "juizo", "sabio", "apraz", "forma", "servo", "prosa",
+    "tenro", "falar", "desse", "pifio", "presa", "ajuda", "certo", "posso", "cunho", "ontem",
+    "viril", "vendo", "legal", "devir", "heroi", "manso", "falso", "meiga", "valor", "reaça",
+    "facil", "visar", "magoa", "serio", "ebrio", "acaso", "fluir", "guisa", "afago", "linda",
+    "plato", "lugar", "impio", "temer", "garbo", "praxe", "obvio", "cisma", "matiz", "burro",
+    "bruma", "uniao", "pleno", "crise", "exodo", "fluxo", "havia", "venia", "senil", "tedio",
+    "ritmo", "morte", "enfim", "levar", "tomar", "olhar", "visao", "alibi", "casta", "brega",
+    "genio", "prumo", "parvo", "vital", "bravo", "favor", "reles", "cabal", "falta", "pulha",
+    "ouvir", "vivaz", "reter", "parco", "tecer", "calma", "valia", "sabia", "outro", "ameno",
+    "laico", "grato", "viver", "tendo", "terra", "possa", "nocao", "carma", "forca", "passo",
+    "unico", "achar", "nicho", "ranco", "pobre", "noite", "facam", "rever", "prime", "rogar",
+    "fardo", "farsa", "fator", "obito", "ativo", "selar", "coeso", "dubio", "epico", "anelo",
+    "citar", "nossa", "sinto", "papel", "leigo", "cisao", "sesta", "claro", "sonso", "ciume",
+    "lider", "adiar", "cesta", "haste", "deter", "velho", "tende", "gente", "atuar", "humor",
+    "revel", "sulco", "ideal", "vemos", "exato", "arduo", "ficar", "ponto", "igual", "vazio",
+    "amplo", "fonte", "marco", "labor", "feixe", "lavra", "terno", "remir", "debil", "hiato",
+    "senao", "capaz", "cauda", "gesto", "otica", "tanto", "ambos", "varao", "imune", "inata",
+    "relva", "jovem", "vacuo", "tenra", "toada", "sonsa", "ciclo", "apoio", "cocar", "cacar",
+    "raiva", "vimos", "algum", "pouco", "serie", "xeque", "chuva", "farao", "horda", "leito",
+    "fusão", "advem", "entre", "feito", "sente", "probo", "coesa", "doido", "minha", "frase",
+    "carro", "cruel", "anuir", "trama", "torco", "verso", "brisa", "impar", "rigor", "botar",
+    "chata", "massa", "blase", "lazer", "prece", "maior", "dorso", "pegar", "sorte", "signo",
+    "seita", "mocao", "fauna", "covil", "preso", "credo", "furor", "casto", "morar", "livro",
+    "flora", "vetor", "adeus", "docil", "peste", "liame", "ambas", "plano", "comer", "faina",
+    "senda", "houve", "ocaso", "nunca", "pecha", "saiba", "arido", "setor", "praia", "alias",
+    "manha", "virus", "peixe", "ardor", "meses", "agora", "mudar", "visse", "salvo", "beata",
+    "aceso", "antro", "rezar", "vulto", "parte", "vasto", "breve", "pajem", "saida", "morro",
+    "junto", "banzo", "risco", "campo", "otimo", "avaro", "reger", "prado", "sinal", "grupo",
+    "aureo", "anais", "birra", "segue", "andar", "lenda", "antes", "serao", "motim", "opcao",
+    "acima", "chulo", "estao", "aurea", "fugir", "leite", "nacao", "conta", "rapaz", "atomo",
+    "brava", "treta", "vilao", "oxala", "fruir", "verbo", "parar", "idolo", "texto", "fitar",
+    "indio", "tirar", "jazia", "tenso", "prazo", "reino", "festa", "puxar", "gerir", "alude",
+    "traga", "norma", "tosco", "exame", "epoca", "filho", "prova", "atrio", "bando", "malta",
+    "turba", "corpo", "psico", "arcar", "ancia", "preto", "cheio", "sinha", "aonde", "acesa",
+    "aviao", "voraz", "manha", "fatal", "sarca", "fatos", "quase", "copia", "praga", "venal",
+    "certa", "ligar", "quota", "logro", "nosso", "magia", "dessa", "fixar", "apego", "nivel",
+    "oasis", "afora", "coito", "pompa", "sumir", "soldo", "nodoa", "mente", "alado", "messe",
+    "caixa", "tocar", "longe", "perda", "jirau", "bonus", "lidar", "parca", "tinha", "livre",
+    "verve", "fraco", "lindo", "apelo", "sexta", "solto", "vezes", "glosa", "firme", "grave",
+    "virao", "porta", "opaco", "bater", "turva", "faixa", "sabia", "astro", "salve", "exijo",
+    "doido", "trupe", "fenda", "irmao", "navio", "canon", "pardo", "grata", "abriu", "elite",
+    "parva", "supra", "atual", "autor", "alcar", "besta", "deixa", "viria", "pique", "junco",
+    "bicho", "cioso", "ficha", "curso", "etico", "douto", "macio", "reses", "pagao", "abuso",
+    "calda", "bioma", "cousa", "posto", "desta", "judeu", "radio", "locus", "caber", "menos",
+    "verba", "retem", "video", "culpa", "supor", "chato", "prive", "aluno", "zelar", "extra",
+    "molho", "super", "drops", "torso", "gosto", "calao", "vosso", "baixo", "suave", "light",
+    "advir", "agudo", "combo", "vinha", "julia", "igneo", "asilo", "lapis", "orfao", "ruina",
+    "facho", "turma", "podio", "sitio", "traço", "turvo", "peito", "estio", "pisar", "passa",
+    "piada", "acoes", "ereto", "pilar", "chama", "louca", "brabo", "amena", "finda", "mosto",
+    "avida", "refem", "mesma", "meigo", "forem", "local", "acola", "rouca", "museu", "facto",
+    "pareo", "metie", "surja", "autos", "poeta", "tento", "cutis", "rumor", "optar", "paira",
+    "lasso", "medir", "teste", "poema", "geral", "coral", "drama", "cocho", "folga", "aviso",
+    "busca", "clima", "feudo", "hobby", "urgia", "boato", "clean", "idoso", "rubro", "tetra",
+    "cetro", "pacto", "calmo", "feroz", "ateia", "tacha", "movel", "amiga", "monge", "ponha",
+    "crime", "licao", "golpe", "acude", "daqui", "ebano", "carta", "ecoar", "cacho", "plumo",
+    "verde", "riste", "monte", "vigia", "aroma", "corso", "casar", "saldo", "falha", "fazia",
+    "briga", "conto", "artur", "vetar", "manga", "letal", "pasmo", "volta", "bença", "hoste",
+    "itens", "tribo", "pedra", "rival", "escol", "grama", "forum", "penta", "troça", "tarde",
+    "manga", "roupa", "swing", "chefe", "súcia", "unica", "venha", "civil", "sosia", "natal",
+    "plebe", "fruto", "uteis", "plaga", "vento", "cover", "lesse", "amada", "sarau", "finjo",
+    "cargo", "atimo", "macro", "nuvem", "ornar", "pinho", "virar", "orgão", "axila", "berro",
+    "arado", "vazao", "areia", "stand", "magna", "farta", "tchau", "jogar", "jejum", "seixo",
+    "fosso", "beijo", "catre", "tiver", "giria", "troca", "legua", "bruta", "traje", "nesse",
+    "deste", "perto", "varoa", "inter", "midia", "assar", "perco", "bruto", "tiçao", "viram",
+    "tutor", "renda", "trato", "guria", "todas", "gabar", "estro", "amado", "porte", "surto",
+    "pomar", "close", "rural", "feita", "canso", "pedro", "arfar", "rocha", "nesta", "ambar",
+    "tenha", "bazar", "silvo", "nessa", "vadio", "calor", "santo", "recem", "vedar", "depor",
+    "fossa", "grota", "odiar", "irado", "pavor", "laudo", "vista", "cifra", "aviar", "negar",
+    "etapa", "mamae", "canto", "xucro", "densa", "bucho", "clero", "logos", "verao", "visto",
+    "ferpa", "bolsa", "marca", "regio", "minar", "cerca", "cinto", "vagar", "cenho", "cheia",
+    "chula", "segar", "molde", "lesao", "inves", "salmo", "horto", "agape", "proto", "ruido",
+    "coroa", "paiol", "burra", "urdir", "largo", "morfo", "sotao", "deram", "letra", "pasma",
+    "velha", "simio", "danca", "final", "penso", "pugna", "folha", "esgar", "vasta", "ubere",
+    "troco", "lesto", "narco", "fundo", "sofia", "jazer", "trago", "ceita", "podar", "ufano",
+    "ardis", "quais", "mocho", "linha", "umido", "frota", "apear", "bulir", "ileso", "piche",
+    "troco", "queda", "polis", "alamo", "preço", "neste", "peita", "resto", "civel", "audio",
+    "manto", "matar", "folia", "redor", "monta", "cosmo", "misto", "seiva", "mover", "barro",
+    "chaga", "labia", "bolso", "outra", "banto", "logia", "retro", "chave", "disso", "justa",
+    "olhos", "limpo", "falsa", "album", "barao", "macho", "nacar", "campa", "lutar", "farol",
+    "veloz", "bedel", "louro", "calvo", "gemer", "punha", "axial", "mimar", "porca", "venho",
+    "arroz", "findo", "sabor", "vazia", "louca", "toque", "calca", "rente", "longo", "salva",
+    "enjoo", "zumbi", "lucro", "viger", "coevo", "baixa", "nariz", "dados", "fazes", "lousa",
+    "firma", "subir", "samba", "demao", "solta", "farto", "torna", "urgir", "forro", "ousar",
+    "canil", "diabo", "sigla", "fugiu", "valer", "reler", "pagar", "gueto", "sexto", "pluma",
+    "sabia", "bruxa", "xampu", "repor", "fatuo", "miope", "choca", "corar", "bugre", "vario",
+    "cardo", "custo", "lento", "tumba", "hifen", "mania", "versa", "corte", "pular", "nesga",
+    "penca", "modal", "racio", "sadio", "ferir", "voila", "socio", "sugar", "harem", "digna",
+    "ceifa", "patio", "focar", "usual", "grelo", "casco", "casca", "areio", "tasco", "meiao"
 };
+
 
 void sortear_palavras(const char *palavras_para_sortear[], char palavra_sorteio[]){
 int sorteio = rand()%TOTAL_PALAVRAS;
@@ -35,9 +124,6 @@ int letras_certas(char *palavra_sorteada, char *palavra_jogador, int *vetor){
 for(int i = 0; i < strlen(palavra_sorteada); i++){
     if(palavra_jogador[i] == palavra_sorteada[i]){
         vetor[i] = 1;
-    }
-    else{
-        vetor[i]= 0;
     }
 }
 return vetor;
@@ -104,6 +190,7 @@ void exibir_regras_jogo() {
     getchar();  // Espera o jogador pressionar Enter
 }
 
+//função para transformar letras maiusculas em minusculas
 void letras_minusculas(char *x)
 {
     for(int i=0; i<6; i++)
@@ -120,21 +207,17 @@ int main()
 //DECLARANDO VARIAVEIS
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    int entrada[6];
-    int vetor[5] = {0, 0, 0, 0, 0};
-    int verificadas[5] = {0, 0, 0, 0, 0};
-    char palavra_sorteada[6];
-    char palavra_jogador[6];
-    int i = 1;
-    int escolha_do_usuario;
-    char saida[50] = "";
+    int entrada[6], escolha_do_usuario, i=1, x=1, y=1;
+    char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "";
 //EXIBINDO MENUS
     exibir_nome_jogo();
 
     exibir_regras_jogo();
+    system("cls");
     int opcao;
 
     do {
+            int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0}, verificadas[5] = {0, 0, 0, 0, 0}, verificadas_2[5] = {0, 0, 0, 0, 0};
         // Exibindo o menu
         printf("\n===================================\n");
         printf("           MENU DO TERMO           \n");
@@ -192,12 +275,86 @@ int main()
                     i++;
                         }while(i < 7);
                 if(strcmp(palavra_sorteada, palavra_jogador)!=0){
-                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s", palavra_sorteada);
+                    printf("\nvoce nao acertou a palavra.\nA palavra era: %s\n", palavra_sorteada);
+
     }
+                printf("\nPressione enter para continuar");
+                fflush(stdin);
+                getchar();
+                system("cls");
                 break;
             case 2:
                 printf("Voce escolheu o Modo Dueto!\n");
-                // Aqui, você pode adicionar o código específico para iniciar o modo dueto
+                sortear_palavras(palavras_para_sortear, palavra_sorteada);
+                do{
+                sortear_palavras(palavras_para_sortear, palavra_sorteada_2);
+                }while(palavra_sorteada==palavra_sorteada_2);
+                do{
+                    if(i != 1){
+                        printf("\nLetras ja usadas:");
+                        for(int k = 0; k < strlen(saida); k++){
+                            printf("'%c'  ", saida[k]);
+                            }
+                        }
+                    fflush(stdin);
+                    printf("\nDigite sua palavra: ");
+                    scanf(" %5s", palavra_jogador);
+                    letras_minusculas(palavra_jogador);
+                    letras_certas(palavra_sorteada, palavra_jogador, vetor);
+                    letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
+                    for(int j = 0; j < strlen(palavra_sorteada); j++){
+                        if(vetor[j] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada[j]);
+                            }
+
+                        }
+                        printf("  |  ");
+                        for( int l = 0; l < strlen(palavra_sorteada_2); l++){
+                        if(vetor_2[l] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada_2[l]);
+                            }
+
+                        }
+                    letras_ja_usadas(palavra_jogador, saida);
+                    if(x==1){
+                    printf("\n\n   PRIMEIRA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
+                    if(strcmp(palavra_sorteada, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        x=0;
+                    }
+                    }
+                    if(y==1){
+                    printf("\n\n   SEGUNDA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada_2, palavra_jogador, vetor_2, verificadas_2);
+                    if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a segunda palavra!!\n");
+                        y=0;
+
+                    }
+                    }
+                    if(x==0 && y==0){
+                        break;
+
+                    }
+                    printf("\nVoce tem mais %d tentativas", 6 -i);
+                    printf("\n\n");
+
+                    i++;
+                        }while(i < 7);
+                if(x==1 || y==1){
+                    printf("\nvoce nao acertou as duas palavras.\nAs palavras eram: %s  |  %s", palavra_sorteada, palavra_sorteada_2);
+    }
+                printf("\nPressione enter para continuar");
+                fflush(stdin);
+                getchar();
+                system("cls");
                 break;
             case 3:
                 printf("Voce escolheu o Modo Quarteto!\n");
@@ -211,10 +368,15 @@ int main()
         }
         *saida=NULL;
         i=1;
+        x=1;
+        y=1;
+        system("cls");
 
     } while(opcao != 9);
 
 
 
+
     return 0;
 }
+
