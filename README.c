@@ -1,3 +1,6 @@
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -207,7 +210,7 @@ int main()
 //DECLARANDO VARIAVEIS
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    int entrada[6], escolha_do_usuario, i=1;
+    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, w=1, z=1;
     char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "", palavra_sorteada_3[6], palavra_sorteada_4[6];
 //EXIBINDO MENUS
     exibir_nome_jogo();
@@ -217,7 +220,7 @@ int main()
     int opcao;
 
     do {
-            int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0},vetor_3[5] ={0, 0, 0, 0, 0}, vetor_4[5] = {0, 0, 0, 0, 0}, x=1, y=1, w=1, z=1,
+            int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0},vetor_3[5] ={0, 0, 0, 0, 0}, vetor_4[5] = {0, 0, 0, 0, 0},
              verificadas[5] = {0, 0, 0, 0, 0}, verificadas_2[5] = {0, 0, 0, 0, 0}, verificadas_3[5] = {0, 0, 0, 0, 0}, verificadas_4[5] = {0, 0, 0, 0, 0};
         // Exibindo o menu
         printf("\n===================================\n");
