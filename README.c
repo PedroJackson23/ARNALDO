@@ -207,8 +207,7 @@ int main()
 //DECLARANDO VARIAVEIS
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, z=1;
-    int w = 1;
+    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, w=1, z=1;
     char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "", palavra_sorteada_3[6], palavra_sorteada_4[6];
 //EXIBINDO MENUS
     exibir_nome_jogo();
@@ -345,11 +344,11 @@ int main()
                         break;
 
                     }
-                    printf("\nVoce tem mais %d tentativas", 6 -i);
+                    printf("\nVoce tem mais %d tentativas", 7 -i);
                     printf("\n\n");
 
                     i++;
-                        }while(i < 7);
+                        }while(i < 8);
                 if(x==1 || y==1){
                     printf("\nvoce nao acertou as duas palavras.\nAs palavras eram: %s  |  %s", palavra_sorteada, palavra_sorteada_2);
     }
@@ -461,11 +460,11 @@ int main()
                         break;
 
                     }
-                    printf("\nVoce tem mais %d tentativas", 6 -i);
+                    printf("\nVoce tem mais %d tentativas", 9 -i);
                     printf("\n\n");
 
                     i++;
-                        }while(i < 7);
+                        }while(i < 10);
                 if(x==1 || y==1 || w==1 || z==1){
                     printf("\nvoce nao acertou as quatro palavras.\nAs palavras eram: %s  |  %s  |  %s  |  %s", palavra_sorteada, palavra_sorteada_2, palavra_sorteada_3, palavra_sorteada_4);
     }
