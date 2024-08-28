@@ -207,7 +207,8 @@ int main()
 //DECLARANDO VARIAVEIS
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, w=1, z=1;
+    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, z=1;
+    int w = 1;
     char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "", palavra_sorteada_3[6], palavra_sorteada_4[6];
 //EXIBINDO MENUS
     exibir_nome_jogo();
@@ -446,17 +447,17 @@ int main()
                     letras_quase_certas(palavra_sorteada_3, palavra_jogador, vetor_3, verificadas_3);
                     if(strcmp(palavra_sorteada_3, palavra_jogador)== 0){
                         printf("\nParabens, voce acertou a primeira palavra!!\n");
-                        W=0;
+                        w=0;
                     }
-                    }if(Z==1){
+                    }if(z==1){
                     printf("\n\n   QUARTA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_4, palavra_jogador, vetor_4, verificadas_4);
                     if(strcmp(palavra_sorteada_4, palavra_jogador)== 0){
                         printf("\nParabens, voce acertou a primeira palavra!!\n");
-                        Z=0;
+                        z=0;
                     }
                     }
-                    if(x==0 && y==0 && W==0 && Z==0){
+                    if(x==0 && y==0 && w==0 && z==0){
                         break;
 
                     }
@@ -465,7 +466,7 @@ int main()
 
                     i++;
                         }while(i < 7);
-                if(x==1 || y==1 || W==1 || Z==1){
+                if(x==1 || y==1 || w==1 || z==1){
                     printf("\nvoce nao acertou as quatro palavras.\nAs palavras eram: %s  |  %s  |  %s  |  %s", palavra_sorteada, palavra_sorteada_2, palavra_sorteada_3, palavra_sorteada_4);
     }
                 printf("\nPressione enter para continuar");
