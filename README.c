@@ -207,8 +207,8 @@ int main()
 //DECLARANDO VARIAVEIS
     srand(time(NULL));
     setlocale(LC_ALL, "");
-    int entrada[6], escolha_do_usuario, i=1, x=1, y=1;
-    char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "";
+    int entrada[6], escolha_do_usuario, i=1, x=1, y=1, w=1, z=1;
+    char palavra_sorteada[6], palavra_sorteada_2[6], palavra_jogador[6], saida[50] = "", palavra_sorteada_3[6], palavra_sorteada_4[6];
 //EXIBINDO MENUS
     exibir_nome_jogo();
 
@@ -217,7 +217,8 @@ int main()
     int opcao;
 
     do {
-            int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0}, verificadas[5] = {0, 0, 0, 0, 0}, verificadas_2[5] = {0, 0, 0, 0, 0};
+            int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0},vetor_3[5] ={0, 0, 0, 0, 0}, vetor_4[5] = {0, 0, 0, 0, 0},
+             verificadas[5] = {0, 0, 0, 0, 0}, verificadas_2[5] = {0, 0, 0, 0, 0}, verificadas_3[5] = {0, 0, 0, 0, 0}, verificadas_4[5] = {0, 0, 0, 0, 0};
         // Exibindo o menu
         printf("\n===================================\n");
         printf("           MENU DO TERMO           \n");
@@ -358,7 +359,119 @@ int main()
                 break;
             case 3:
                 printf("Voce escolheu o Modo Quarteto!\n");
-                // Aqui, você pode adicionar o código específico para iniciar o modo quarteto
+                sortear_palavras(palavras_para_sortear, palavra_sorteada);
+                do{
+                sortear_palavras(palavras_para_sortear, palavra_sorteada_2);
+                }while(palavra_sorteada==palavra_sorteada_2);
+                do{
+                sortear_palavras(palavras_para_sortear, palavra_sorteada_3);
+                }while(palavra_sorteada_3==palavra_sorteada||palavra_sorteada_3==palavra_sorteada_2);
+                do{
+                sortear_palavras(palavras_para_sortear, palavra_sorteada_4);
+                }while(palavra_sorteada_4==palavra_sorteada||palavra_sorteada_4==palavra_sorteada_2||palavra_sorteada_4==palavra_sorteada_3);
+                do{
+                    if(i != 1){
+                        printf("\nLetras ja usadas:");
+                        for(int k = 0; k < strlen(saida); k++){
+                            printf("'%c'  ", saida[k]);
+                            }
+                        }
+                    fflush(stdin);
+                    printf("\nDigite sua palavra: ");
+                    scanf(" %5s", palavra_jogador);
+                    letras_minusculas(palavra_jogador);
+                    letras_certas(palavra_sorteada, palavra_jogador, vetor);
+                    letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
+                    letras_certas(palavra_sorteada_3, palavra_jogador, vetor_3);
+                    letras_certas(palavra_sorteada_4, palavra_jogador, vetor_4);
+                    for(int j = 0; j < strlen(palavra_sorteada); j++){
+                        if(vetor[j] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada[j]);
+                            }
+
+                        }
+                        printf("  |  ");
+                        for( int l = 0; l < strlen(palavra_sorteada_2); l++){
+                        if(vetor_2[l] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada_2[l]);
+                            }
+
+                        }
+                        printf("  |  ");
+                        for( int m = 0; m < strlen(palavra_sorteada_3); m++){
+                        if(vetor_3[m] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada_3[m]);
+                            }
+
+                        }
+                        printf("  |  ");
+                        for( int n = 0; n < strlen(palavra_sorteada_4); n++){
+                        if(vetor_4[n] == 0){
+                            printf("_");
+                        }
+                        else{
+                            printf("%c", palavra_sorteada_4[n]);
+                            }
+
+                        }
+                    letras_ja_usadas(palavra_jogador, saida);
+                    if(x==1){
+                    printf("\n\n   PRIMEIRA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
+                    if(strcmp(palavra_sorteada, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        x=0;
+                    }
+                    }
+                    if(y==1){
+                    printf("\n\n   SEGUNDA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada_2, palavra_jogador, vetor_2, verificadas_2);
+                    if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a segunda palavra!!\n");
+                        y=0;
+
+                    }
+                    }
+                    if(w==1){
+                    printf("\n\n   TERCEIRA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada_3, palavra_jogador, vetor_3, verificadas_3);
+                    if(strcmp(palavra_sorteada_3, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        W=0;
+                    }
+                    }if(Z==1){
+                    printf("\n\n   QUARTA PALAVRA\n");
+                    letras_quase_certas(palavra_sorteada_4, palavra_jogador, vetor_4, verificadas_4);
+                    if(strcmp(palavra_sorteada_4, palavra_jogador)== 0){
+                        printf("\nParabens, voce acertou a primeira palavra!!\n");
+                        Z=0;
+                    }
+                    }
+                    if(x==0 && y==0 && W==0 && Z==0){
+                        break;
+
+                    }
+                    printf("\nVoce tem mais %d tentativas", 6 -i);
+                    printf("\n\n");
+
+                    i++;
+                        }while(i < 7);
+                if(x==1 || y==1 || W==1 || Z==1){
+                    printf("\nvoce nao acertou as quatro palavras.\nAs palavras eram: %s  |  %s  |  %s  |  %s", palavra_sorteada, palavra_sorteada_2, palavra_sorteada_3, palavra_sorteada_4);
+    }
+                printf("\nPressione enter para continuar");
+                fflush(stdin);
+                getchar();
+                system("cls");
                 break;
             case 9:
                 printf("Saindo do jogo...\n");
@@ -370,6 +483,8 @@ int main()
         i=1;
         x=1;
         y=1;
+        w=1;
+        z=1;
         system("cls");
 
     } while(opcao != 9);
@@ -379,4 +494,3 @@ int main()
 
     return 0;
 }
-
