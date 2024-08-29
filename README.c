@@ -67,7 +67,7 @@ const char *palavras_para_sortear[TOTAL_PALAVRAS] = {
     "calda", "bioma", "cousa", "posto", "desta", "judeu", "radio", "locus", "caber", "menos",
     "verba", "retem", "video", "culpa", "supor", "chato", "prive", "aluno", "zelar", "extra",
     "molho", "super", "drops", "torso", "gosto", "calao", "vosso", "baixo", "suave", "light",
-    "advir", "agudo", "combo", "vinha", "julia", "igneo", "asilo", "lapis", "orfao", "ruina",
+    "advir", "agudo", "combo", "vinha", "melao", "igneo", "asilo", "lapis", "orfao", "ruina",
     "facho", "turma", "podio", "sitio", "traço", "turvo", "peito", "estio", "pisar", "passa",
     "piada", "acoes", "ereto", "pilar", "chama", "louca", "brabo", "amena", "finda", "mosto",
     "avida", "refem", "mesma", "meigo", "forem", "local", "acola", "rouca", "museu", "facto",
@@ -79,7 +79,7 @@ const char *palavras_para_sortear[TOTAL_PALAVRAS] = {
     "verde", "riste", "monte", "vigia", "aroma", "corso", "casar", "saldo", "falha", "fazia",
     "briga", "conto", "artur", "vetar", "manga", "letal", "pasmo", "volta", "bença", "hoste",
     "itens", "tribo", "pedra", "rival", "escol", "grama", "forum", "penta", "troça", "tarde",
-    "manga", "roupa", "swing", "chefe", "súcia", "unica", "venha", "civil", "sosia", "natal",
+    "manga", "roupa", "swing", "chefe", "sabao", "unica", "venha", "civil", "sosia", "natal",
     "plebe", "fruto", "uteis", "plaga", "vento", "cover", "lesse", "amada", "sarau", "finjo",
     "cargo", "atimo", "macro", "nuvem", "ornar", "pinho", "virar", "orgão", "axila", "berro",
     "arado", "vazao", "areia", "stand", "magna", "farta", "tchau", "jogar", "jejum", "seixo",
@@ -108,7 +108,7 @@ const char *palavras_para_sortear[TOTAL_PALAVRAS] = {
     "sabia", "bruxa", "xampu", "repor", "fatuo", "miope", "choca", "corar", "bugre", "vario",
     "cardo", "custo", "lento", "tumba", "hifen", "mania", "versa", "corte", "pular", "nesga",
     "penca", "modal", "racio", "sadio", "ferir", "voila", "socio", "sugar", "harem", "digna",
-    "ceifa", "patio", "focar", "usual", "grelo", "casco", "casca", "areio", "tasco", "meiao"
+    "ceifa", "patio", "focar", "usual", "cisne", "casco", "casca", "areio", "tasco", "meiao"
 };
 
 
@@ -180,7 +180,7 @@ void exibir_nome_jogo() {
 // Função para exibir as regras do jogo e esperar o jogador pressionar Enter
 void exibir_regras_jogo() {
     printf("\nRegras do Jogo Termo:\n");
-    printf("1. Você deve adivinhar a palavra correta em 6 tentativas.\n");
+    printf("1. Você deve adivinhar a palavra correta em 6 tentativas no modo normal, 7 no dueto e 9 no quarteto.\n");
     printf("2. A cada tentativa, você deve digitar uma palavra de 5 letras.\n");
     printf("3. O jogo indicará quais letras estão na posição correta e quais letras existem na palavra, mas estão na posição errada.\n");
     printf("4. As letras corretas na posição correta serão exibidas.\n");
