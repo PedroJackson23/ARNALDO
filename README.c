@@ -1,6 +1,3 @@
-
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -205,6 +202,17 @@ void letras_minusculas(char *x)
 
     }
 }
+
+//verificar se a palavra e valida
+int verificar_palavra(char *palavra_usuario) {
+    for (int i = 0; i < TOTAL_PALAVRAS; i++) {
+        if (strcmp(palavra_usuario, palavras_para_sortear[i]) == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int main()
 {
 //DECLARANDO VARIAVEIS
@@ -257,6 +265,11 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
+                    while(verificar_palavra(palavra_jogador)) {
+                        printf("Digite uma palavra valida: ");
+                        scanf("%s", palavra_jogador);
+                        letras_minusculas(palavra_jogador);
+                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     for(int j = 0; j < strlen(palavra_sorteada); j++){
                         if(vetor[j] == 0){
@@ -304,6 +317,11 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
+                    while(verificar_palavra(palavra_jogador)) {
+                        printf("Digite uma palavra valida: ");
+                        scanf("%s", palavra_jogador);
+                        letras_minusculas(palavra_jogador);
+                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
                     for(int j = 0; j < strlen(palavra_sorteada); j++){
@@ -327,20 +345,19 @@ int main()
                         }
                     letras_ja_usadas(palavra_jogador, saida);
                     if(x==1){
-                    printf("\n\n   PRIMEIRA PALAVRA\n");
-                    letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
-                    if(strcmp(palavra_sorteada, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a primeira palavra!!\n");
-                        x=0;
+                        printf("\n\n   PRIMEIRA PALAVRA\n");
+                        letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
+                        if(strcmp(palavra_sorteada, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a primeira palavra!!\n");
+                            x=0;
                     }
                     }
                     if(y==1){
                     printf("\n\n   SEGUNDA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_2, palavra_jogador, vetor_2, verificadas_2);
-                    if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a segunda palavra!!\n");
-                        y=0;
-
+                        if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a segunda palavra!!\n");
+                            y=0;
                     }
                     }
                     if(x==0 && y==0){
@@ -383,6 +400,11 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
+                    while(verificar_palavra(palavra_jogador)) {
+                        printf("Digite uma palavra valida: ");
+                        scanf("%s", palavra_jogador);
+                        letras_minusculas(palavra_jogador);
+                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
                     letras_certas(palavra_sorteada_3, palavra_jogador, vetor_3);
@@ -398,66 +420,65 @@ int main()
                         }
                         printf("  |  ");
                         for( int l = 0; l < strlen(palavra_sorteada_2); l++){
-                        if(vetor_2[l] == 0){
-                            printf("_");
-                        }
-                        else{
-                            printf("%c", palavra_sorteada_2[l]);
+                            if(vetor_2[l] == 0){
+                                printf("_");
+                            }
+                            else{
+                                printf("%c", palavra_sorteada_2[l]);
                             }
 
                         }
                         printf("  |  ");
                         for( int m = 0; m < strlen(palavra_sorteada_3); m++){
-                        if(vetor_3[m] == 0){
-                            printf("_");
-                        }
-                        else{
-                            printf("%c", palavra_sorteada_3[m]);
+                            if(vetor_3[m] == 0){
+                                printf("_");
+                            }
+                            else{
+                                printf("%c", palavra_sorteada_3[m]);
                             }
 
                         }
                         printf("  |  ");
                         for( int n = 0; n < strlen(palavra_sorteada_4); n++){
-                        if(vetor_4[n] == 0){
-                            printf("_");
-                        }
-                        else{
-                            printf("%c", palavra_sorteada_4[n]);
+                            if(vetor_4[n] == 0){
+                                printf("_");
                             }
-
+                            else{
+                                printf("%c", palavra_sorteada_4[n]);
+                            }
                         }
                     letras_ja_usadas(palavra_jogador, saida);
                     if(x==1){
                     printf("\n\n   PRIMEIRA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
-                    if(strcmp(palavra_sorteada, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a primeira palavra!!\n");
-                        x=0;
-                    }
+                        if(strcmp(palavra_sorteada, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a primeira palavra!!\n");
+                            x=0;
+                        }
                     }
                     if(y==1){
                     printf("\n\n   SEGUNDA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_2, palavra_jogador, vetor_2, verificadas_2);
-                    if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a segunda palavra!!\n");
-                        y=0;
+                        if(strcmp(palavra_sorteada_2, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a segunda palavra!!\n");
+                            y=0;
 
-                    }
+                        }
                     }
                     if(w==1){
                     printf("\n\n   TERCEIRA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_3, palavra_jogador, vetor_3, verificadas_3);
-                    if(strcmp(palavra_sorteada_3, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a terceira palavra!!\n");
-                        w=0;
-                    }
+                        if(strcmp(palavra_sorteada_3, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a terceira palavra!!\n");
+                            w=0;
+                        }
                     }if(z==1){
                     printf("\n\n   QUARTA PALAVRA\n");
                     letras_quase_certas(palavra_sorteada_4, palavra_jogador, vetor_4, verificadas_4);
-                    if(strcmp(palavra_sorteada_4, palavra_jogador)== 0){
-                        printf("\nParabens, voce acertou a quarta palavra!!\n");
-                        z=0;
-                    }
+                        if(strcmp(palavra_sorteada_4, palavra_jogador)== 0){
+                            printf("\nParabens, voce acertou a quarta palavra!!\n");
+                            z=0;
+                        }
                     }
                     if(x==0 && y==0 && w==0 && z==0){
                         break;
@@ -491,9 +512,6 @@ int main()
         system("cls");
 
     } while(opcao != 9);
-
-
-
 
     return 0;
 }
