@@ -108,7 +108,8 @@ const char *palavras_para_sortear[TOTAL_PALAVRAS] = {
     "sabia", "bruxa", "xampu", "repor", "fatuo", "miope", "choca", "corar", "bugre", "vario",
     "cardo", "custo", "lento", "tumba", "hifen", "mania", "versa", "corte", "pular", "nesga",
     "penca", "modal", "racio", "sadio", "ferir", "voila", "socio", "sugar", "harem", "digna",
-    "ceifa", "patio", "focar", "usual", "cisne", "casco", "casca", "areio", "tasco", "meiao"
+    "ceifa", "patio", "focar", "usual", "cisne", "casco", "casca", "areio", "tasco", "meiao",
+    "fruta", "cinco"
 };
 
 
@@ -203,6 +204,16 @@ void letras_minusculas(char *x)
     }
 }
 
+//verificar se a palavra e valida
+int verificar_palavra(char *palavra_usuario) {
+    for (int i = 0; i < TOTAL_PALAVRAS; i++) {
+        if (strcmp(palavra_usuario, palavras_para_sortear[i]) == 0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int main()
 {
 //DECLARANDO VARIAVEIS
@@ -216,6 +227,7 @@ int main()
     exibir_regras_jogo();
     system("cls");
     int opcao;
+    int contador_vitorias = 0, contador_partidas = 0;
 
     do {
             int vetor[5] = {0, 0, 0, 0, 0}, vetor_2[5] = {0, 0, 0, 0, 0},vetor_3[5] ={0, 0, 0, 0, 0}, vetor_4[5] = {0, 0, 0, 0, 0},
@@ -269,6 +281,7 @@ int main()
                     letras_quase_certas(palavra_sorteada, palavra_jogador, vetor, verificadas);
                     if(strcmp(palavra_sorteada, palavra_jogador)== 0){
                         printf("\nParabens, voce acertou a palavra!!\n");
+                        contador_vitorias++;
                         break;
                     }
                     printf("\nVoce tem mais %d tentativas", 6 -i);
@@ -280,10 +293,6 @@ int main()
                     printf("\nvoce nao acertou a palavra.\nA palavra era: %s\n", palavra_sorteada);
 
                 }
-                printf("\nPressione enter para continuar");
-                fflush(stdin);
-                getchar();
-                system("cls");
                 break;
             case 2:
                 printf("Voce escolheu o Modo Dueto!\n");
@@ -341,6 +350,7 @@ int main()
                     }
                     }
                     if(x==0 && y==0){
+                        contador_vitorias++;
                         break;
 
                     }
@@ -352,10 +362,6 @@ int main()
                 if(x==1 || y==1){
                     printf("\nvoce nao acertou as duas palavras.\nAs palavras eram: %s  |  %s", palavra_sorteada, palavra_sorteada_2);
                 }
-                printf("\nPressione enter para continuar");
-                fflush(stdin);
-                getchar();
-                system("cls");
                 break;
             case 3:
                 printf("Voce escolheu o Modo Quarteto!\n");
@@ -456,6 +462,7 @@ int main()
                         }
                     }
                     if(x==0 && y==0 && w==0 && z==0){
+                        contador_vitorias++;
                         break;
 
                     }
@@ -467,10 +474,6 @@ int main()
                 if(x==1 || y==1 || w==1 || z==1){
                     printf("\nvoce nao acertou as quatro palavras.\nAs palavras eram: %s  |  %s  |  %s  |  %s", palavra_sorteada, palavra_sorteada_2, palavra_sorteada_3, palavra_sorteada_4);
                 }
-                printf("\nPressione enter para continuar");
-                fflush(stdin);
-                getchar();
-                system("cls");
                 break;
             case 9:
                 printf("Saindo do jogo...\n");
@@ -478,6 +481,12 @@ int main()
             default:
                 printf("Opcao invalida! Tente novamente.\n");
         }
+        contador_partidas++;
+        printf("\nPartidas Jogadas: %d\t\t\tVitórias: %d\t\t\tPorcentagem de vitórias: %d%%", contador_partidas, contador_vitorias, (contador_vitorias * 100 / contador_partidas));
+        printf("\n\nPressione enter para continuar");
+        fflush(stdin);
+        getchar();
+        system("cls");
         *saida=NULL;
         i=1;
         x=1;
