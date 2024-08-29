@@ -203,16 +203,6 @@ void letras_minusculas(char *x)
     }
 }
 
-//verificar se a palavra e valida
-int verificar_palavra(char *palavra_usuario) {
-    for (int i = 0; i < TOTAL_PALAVRAS; i++) {
-        if (strcmp(palavra_usuario, palavras_para_sortear[i]) == 0) {
-            return 0;
-        }
-    }
-    return 1;
-}
-
 int main()
 {
 //DECLARANDO VARIAVEIS
@@ -265,11 +255,6 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
-                    while(verificar_palavra(palavra_jogador)) {
-                        printf("Digite uma palavra valida: ");
-                        scanf("%s", palavra_jogador);
-                        letras_minusculas(palavra_jogador);
-                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     for(int j = 0; j < strlen(palavra_sorteada); j++){
                         if(vetor[j] == 0){
@@ -317,11 +302,6 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
-                    while(verificar_palavra(palavra_jogador)) {
-                        printf("Digite uma palavra valida: ");
-                        scanf("%s", palavra_jogador);
-                        letras_minusculas(palavra_jogador);
-                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
                     for(int j = 0; j < strlen(palavra_sorteada); j++){
@@ -400,11 +380,6 @@ int main()
                     printf("\nDigite sua palavra: ");
                     scanf(" %5s", palavra_jogador);
                     letras_minusculas(palavra_jogador);
-                    while(verificar_palavra(palavra_jogador)) {
-                        printf("Digite uma palavra valida: ");
-                        scanf("%s", palavra_jogador);
-                        letras_minusculas(palavra_jogador);
-                    }
                     letras_certas(palavra_sorteada, palavra_jogador, vetor);
                     letras_certas(palavra_sorteada_2, palavra_jogador, vetor_2);
                     letras_certas(palavra_sorteada_3, palavra_jogador, vetor_3);
