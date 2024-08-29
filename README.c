@@ -294,7 +294,7 @@ int main()
                 if(strcmp(palavra_sorteada, palavra_jogador)!=0){
                     printf("\nvoce nao acertou a palavra.\nA palavra era: %s\n", palavra_sorteada);
 
-    }
+                }
                 printf("\nPressione enter para continuar");
                 fflush(stdin);
                 getchar();
@@ -371,7 +371,7 @@ int main()
                         }while(i < 8);
                 if(x==1 || y==1){
                     printf("\nvoce nao acertou as duas palavras.\nAs palavras eram: %s  |  %s", palavra_sorteada, palavra_sorteada_2);
-    }
+                }
                 printf("\nPressione enter para continuar");
                 fflush(stdin);
                 getchar();
@@ -491,7 +491,7 @@ int main()
                         }while(i < 10);
                 if(x==1 || y==1 || w==1 || z==1){
                     printf("\nvoce nao acertou as quatro palavras.\nAs palavras eram: %s  |  %s  |  %s  |  %s", palavra_sorteada, palavra_sorteada_2, palavra_sorteada_3, palavra_sorteada_4);
-    }
+                }
                 printf("\nPressione enter para continuar");
                 fflush(stdin);
                 getchar();
