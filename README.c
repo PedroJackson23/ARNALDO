@@ -477,6 +477,7 @@ int main()
                 break;
             case 9:
                 printf("Saindo do jogo...\n");
+                contador_partidas--;
                 break;
             default:
                 printf("Opcao invalida! Tente novamente.\n");
