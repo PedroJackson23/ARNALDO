@@ -204,16 +204,6 @@ void letras_minusculas(char *x)
     }
 }
 
-//verificar se a palavra e valida
-int verificar_palavra(char *palavra_usuario) {
-    for (int i = 0; i < TOTAL_PALAVRAS; i++) {
-        if (strcmp(palavra_usuario, palavras_para_sortear[i]) == 0) {
-            return 0;
-        }
-    }
-    return 1;
-}
-
 int main()
 {
 //DECLARANDO VARIAVEIS
